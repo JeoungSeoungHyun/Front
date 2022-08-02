@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Size</title>
+    <style>
+        div {
+            display: inline-block;
+            /* block은 끝까지 inline-block은 크기만큼만 */
+            background-color: aqua;
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body style="overflow: scroll;">
+    <div>Window Size</div>
+    <script>
+        const div = document.querySelector('div'); /* 첫번째 div 태그를 찾아낸다. id나 tag, 클래스 이름으로*/
+
+        /* 
+        맨 처음에 div 내부에 값이 나오지 않으므로 해결해줘야 하는데 똑같은 코드를 반복하는 것은 좋지 않기 때문에
+        함수를 정의하여 이 함수를 재활용해주도록 한다.
+        */
+        function updateDiv() {
+            // 즐겨찾기는 따로 취급되는 것 같아 보인다.
+            div.innerHTML = `
+                    window.screen(윈도우 전체) : ${window.screen.width}, ${window.screen.height} <br/>
+                    window.outer(문서 전체 - 탭이나 url 제외) : ${window.outerWidth}, ${window.outerHeight} <br/> 
+                    window.inner(html 전체 크기(스크롤바 포함) - 개발자 툴 같은 부분 제외) : ${window.innerWidth}, ${window.innerHeight} <br/>
+                    documentElement.clientWidth(html에서 스크롤바의 사이즈를 제외한 현재 보이는 크기) : ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+                `;
+        }
+
+        updateDiv();
+
+        window.addEventListener('resize', () => { /* window에 이벤트리스너를 추가해준다*/
+            updateDiv();
+        })
+    </script>
+</body>
+
+</html>

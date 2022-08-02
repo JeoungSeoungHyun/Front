@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinates</title>
+</head>
+    <style>
+        body{
+            /* overflow hidden을 주면 스크롤이 생기지 않고 짤림
+             overflow: hidden; */
+        }
+
+        div{
+            background-color: bisque;
+            width: 200px;
+            height: 200px;
+            margin-top: 5px;
+        }
+
+        .special {
+            background-color: red;
+        }
+    </style>
+<body>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div class="special"></div>
+   <div></div>
+
+    <script>
+        const special = document.querySelector('.special');
+
+        special.addEventListener('click',(event) => {
+            // element를 찾아서 그 element의 top,bottom,left,right,width,height,coordinates를 알려준다.
+            const rect = special.getBoundingClientRect();
+            console.log(rect);
+            // clcick한 곳을 기준으로 event가 발생
+            // x,y는 client 좌표 즉, 보이는 화면내에서 좌표를 의미한다.
+            // pageX,Y는 화면내 보이지 않는 부분을 포함한 좌표를 의미한다.
+            // IDE가 자동완성을 해주지 않는 부분도 있으니 찾은거는 일단 실행해보기!!
+            console.log(event)
+            console.log(`좌표 : ${event.x},${event.y}`)
+            console.log(`page 좌표 : ${event.pageX},${event.pageY}`);
+            console.log(`client 좌표 : ${event.clientX},${event.clientY}`);
+        });
+
+    </script>
+
+</body>
+</html>
