@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordinates</title>
 </head>
-    <style>
-        body{
-            /* overflow hidden을 주면 스크롤이 생기지 않고 짤림
+<style>
+    body {
+        /* overflow hidden을 주면 스크롤이 생기지 않고 짤림
              overflow: hidden; */
-        }
+    }
 
-        div{
-            background-color: bisque;
-            width: 200px;
-            height: 200px;
-            margin-top: 5px;
-        }
+    div {
+        background-color: bisque;
+        width: 200px;
+        height: 200px;
+        margin-top: 5px;
+    }
 
-        .special {
-            background-color: red;
-        }
-    </style>
+    .special {
+        background-color: red;
+    }
+</style>
+
 <body>
-   <div></div>
-   <div></div>
-   <div></div>
-   <div></div>
-   <div class="special"></div>
-   <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
 
     <script>
         const special = document.querySelector('.special');
 
-        special.addEventListener('click',(event) => {
+        special.addEventListener('click', (event) => {
             // element를 찾아서 그 element의 top,bottom,left,right,width,height,coordinates를 알려준다.
             const rect = special.getBoundingClientRect();
             console.log(rect);
@@ -51,4 +53,5 @@
     </script>
 
 </body>
+
 </html>

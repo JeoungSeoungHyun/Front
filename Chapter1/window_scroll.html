@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordinates</title>
+    <title>Scroll</title>
 </head>
 <style>
     div {
@@ -52,15 +52,6 @@
     <script>
         const special = document.querySelector('.special');
 
-        document.addEventListener('scroll', () => {
-
-            const rect = special.getBoundingClientRect();
-
-            // scroll을 하면 event가 발생 scrollTop은 현재 스크롤의 top으로부터 위치 scrollHeigth는 스크롤바 전체 길이
-            // console.log(`scrollTop : ${document.documentElement.scrollTop}`);
-            // console.log(`scrollHeight : ${document.documentElement.scrollHeight}`);\
-        });
-
         // scrollTo는 해당위치로 scrollBy는 해당위치에서부터 이동하는 것 x,y좌표가 다 있어야한다.
         // 이동하는 방법은 좌표(coordinates) 또는 options(left,top,behavior)을 통해서 가능하다.
         // behavior을 통해 smooth 또는 auto 로 이동이 가능하게 된다.
@@ -75,13 +66,23 @@
         // Element의 scrollIntoView를 사용하면 해당하는 element의 위치로 스크롤이 이동하게 된다.
         function moveSpecial() {
 
-            const rect = special.getBoundingClientRect();
+            /* const rect = special.getBoundingClientRect();
 
             var elementY = rect.top;
 
+            console.log(special);
             console.log(rect);
-            console.log(`elementY : ${elementY}`);
+            console.log(`elementY : ${elementY}`); */
+
+            /* 아래 코드처럼 special div의 좌표를 활용하여 이동을 하도록 하려했는데
+            이렇게 하는경우 이상하게 계속 왔다갔다 하는 이슈가 발생하였다. 계속 실행해보며
+            생각해보니 첫번째 클릭하여 scroll이 이동한 후에는 special div가 최상단이 되기 때문에
+            y의 좌표가 0이 되어 두번째 누르는 경우 page 최상단으로 이동이 되는 이슈였다.
+            */
+
+            // 결론 : 해당하는 element로 이동하기 위해서는 scrollIntoView()를 사용!!
             // window.scrollTo(0, elementY);
+
             special.scrollIntoView();
         }
 
