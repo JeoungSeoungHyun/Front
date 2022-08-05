@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toast ui</title>
+
+    <!-- ** pagination cdn code가 gird cdn code보다 먼저 와야 동작한다. -->
+    <!-- toast ui pagination cdn code -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+    <script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+    
+    <!-- toast ui grid cdn code -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+</head>
+<body>
+
+    <div id="grid"></div>
+
+    <div id="pagination" class="tui-pagination"></div>
+
+    <script>
+        ///////////// Grid
+        // 1. Grid 객체 생성
+        const Grid = tui.Grid;
+
+        // 2. 옵션 주기
+        const grid = new Grid({
+		el: document.getElementById('grid'),
+		columns: [
+		{
+			header: '회사명',
+			name: 'cmp_nm',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		},
+		{
+			header: '단말명',
+			name: 'unit_nm',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		},
+		{
+			header: '지점명',
+			name: 'brc_nm',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		},
+		{
+			header: '대리점명',
+			name: 'agt_nm',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		},
+		{
+			header: '최종수신일시',
+			name: 'last_makeDate',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		},
+		{
+			header: '수신일시차이',
+			name: 'differ',
+            align: 'center', // 정렬을 설정하는 부분(타이틀에는 적용이 되지 않는 것 같다.)
+            resizable: true,
+            sortable: true
+		}
+		],
+        // rowHeight: 100, // 제목을 제외한 row의 높이를 지정
+        pageOptions: {
+            useClient: true,
+            perPage: 1
+        },
+        scrollX: false,
+        socrllY: false,
+		data : [
+			{
+				cmp_nm: 'iot',
+				unit_nm: '1',
+				brc_nm: '2',
+				agt_nm: '3',
+				last_makeDate: '2022-08-05',
+				differ: '5'
+			},
+            {
+				cmp_nm: 'iot2',
+				unit_nm: '12',
+				brc_nm: '22',
+				agt_nm: '32',
+				last_makeDate: '2022-08-06',
+				differ: '52'
+			},
+            {
+				cmp_nm: 'iot3',
+				unit_nm: '10',
+				brc_nm: '222',
+				agt_nm: '0',
+				last_makeDate: '2022-08-07',
+				differ: '7'
+			}
+		]
+	});
+        // 데이터 세팅
+	    instance.resetData(newData);
+        
+        ///////////// Pagination
+        // // 1. 객체 생성
+        // const Pagination = tui.Pagination;
+        
+        // // 2. 옵션 주기
+        // const container = document.getElementById('pagination');
+        // const options =  {
+        //     totalItmes: 3,
+        //     itemsPerPage: 2,
+        //     visiblePages:2
+        // }
+
+        // const pagination2 = new Pagination(container,options);
+
+        const pagination = grid.getPagination();
+
+    </script>
+</body>
+</html>
